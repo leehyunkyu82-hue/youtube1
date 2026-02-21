@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>유튜브 댓글 분석 대시보드</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="dashboard">
+      <section class="hero card">
+        <h1>📊 국민연금 유튜브 여론 모니터링</h1>
+        <div class="target-video">🎥 최대 큰손 국민연금, 본격 코스닥 투자 열기? | 김성주 국민연금공단 이사장 [딥 퍼플]</div>
+        <div class="stats-grid">
+          <article class="stat-box">
+            <p>총 조회수</p>
+            <strong class="primary">65,962</strong>
+          </article>
+          <article class="stat-box">
+            <p>좋아요</p>
+            <strong class="danger">2,276</strong>
+          </article>
+          <article class="stat-box">
+            <p>댓글 수</p>
+            <strong class="success">189</strong>
+          </article>
+          <article class="stat-box">
+            <p>최종 업데이트</p>
+            <strong class="neutral time">2026-02-20 21:03:51</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="card chart-card">
+        <h2>📈 시간대별 누적 조회수 추이</h2>
+        <canvas id="viewsTrend"></canvas>
+      </section>
+
+      <section class="card chart-card">
+        <h2>😊 전체 감성 분포</h2>
+        <canvas id="sentimentDonut"></canvas>
+      </section>
+
+      <section class="card chart-card">
+        <h2>📊 분류별 여론 (긍정/부정/중립)</h2>
+        <canvas id="categoryBar"></canvas>
+      </section>
+
+      <section class="card table-card">
+        <div class="table-header">
+          <h2>🗂️ 전체 분석 데이터</h2>
+          <button type="button">헤더를 클릭해 정렬하세요</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>감성</th>
+                <th>분류</th>
+                <th>키워드</th>
+                <th>댓글 내용</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="pill positive">긍정</span></td>
+                <td><span class="tag">국민연금 조직</span></td>
+                <td>이사장</td>
+                <td>좋은 방향 감사합니다. 진심으로 응원합니다!</td>
+              </tr>
+              <tr>
+                <td><span class="pill positive">긍정</span></td>
+                <td><span class="tag">퇴직연금</span></td>
+                <td>개선</td>
+                <td>퇴직연금 개선안 환영합니다.</td>
+              </tr>
+              <tr>
+                <td><span class="pill negative">부정</span></td>
+                <td><span class="tag">주주권행사</span></td>
+                <td>의결권</td>
+                <td>의결권 행사 기준이 더 명확했으면 좋겠습니다.</td>
+              </tr>
+              <tr>
+                <td><span class="pill negative">부정</span></td>
+                <td><span class="tag">연금제도</span></td>
+                <td>자금 인출</td>
+                <td>연금 신뢰를 높일 수 있는 정책이 필요합니다.</td>
+              </tr>
+              <tr>
+                <td><span class="pill neutral">중립</span></td>
+                <td><span class="tag">기타</span></td>
+                <td>질문</td>
+                <td>코스닥 투자 기준이 궁금합니다.</td>
+              </tr>
+              <tr>
+                <td><span class="pill positive">긍정</span></td>
+                <td><span class="tag">주택투자</span></td>
+                <td>공공성</td>
+                <td>공공성과 수익성의 균형을 잘 맞췄으면 합니다.</td>
+              </tr>
+              <tr>
+                <td><span class="pill negative">부정</span></td>
+                <td><span class="tag">연금제도</span></td>
+                <td>불안정</td>
+                <td>정책 변경이 잦아서 장기 계획 세우기가 어렵네요.</td>
+              </tr>
+              <tr>
+                <td><span class="pill positive">긍정</span></td>
+                <td><span class="tag">국민연금 조직</span></td>
+                <td>성과</td>
+                <td>최근 성과를 투명하게 공개해 주셔서 좋아요.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer class="card disclaimer">
+        <h3>⚠️ 면책조항 (Disclaimer)</h3>
+        <ul>
+          <li>본 대시보드의 데이터는 API를 통한 자동 수집 결과이며 실제 서비스 수치와 차이가 있을 수 있습니다.</li>
+          <li>댓글 분석 결과는 AI 모델 기반 자동 분류 결과로, 실제 작성자 의도와 다를 수 있습니다.</li>
+          <li>제공되는 모든 정보는 참고용이며, 의사결정에 대한 책임은 사용자에게 있습니다.</li>
+        </ul>
+      </footer>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
